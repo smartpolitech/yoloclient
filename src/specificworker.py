@@ -45,7 +45,7 @@ class SpecificWorker(GenericWorker):
 	def initVideo(self):
 		try:
 		 	self.vidFile = cv2.VideoCapture("http://158.49.247.240:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
-
+                        #self.vidFile = cv2.VideoCapture(0)
 #			self.vidFile = cv2.VideoCapture("http://158.49.247.184:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
 		except:
 		    print "problem opening input stream"
@@ -60,7 +60,8 @@ class SpecificWorker(GenericWorker):
 		print "----------------------------------"
 		ret, frame = self.vidFile.read() # read first frame, and the return code of the function.
 		if ret:
-			self.processFrame(frame)
+                        self.processFrame(frame)
+			self.drawImage(frame, [])
 
 	@QtCore.Slot()
 	def compute(self):
@@ -98,6 +99,7 @@ class SpecificWorker(GenericWorker):
 
 
 	def drawImage(self, img, labels):
+            if labels:
 		for box in labels.lBox:
 			if box.prob > 35:
 				p1 = (int(box.x), int(box.y))

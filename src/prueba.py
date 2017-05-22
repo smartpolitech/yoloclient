@@ -24,20 +24,20 @@ import cv2
 cv2.namedWindow("YOLO IA", cv2.WINDOW_AUTOSIZE)
 
 try:
-	# self.vidFile = cv2.VideoCapture("http://158.49.247.240:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
-	self.vidFile = cv2.VideoCapture("/dev/video0")
-	# self.vidFile = cv2.VideoCapture("http://158.49.247.184:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
+	vidFile = cv2.VideoCapture("http://158.49.247.240:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
+	#vidFile = cv2.VideoCapture(0)
+	# vidFile = cv2.VideoCapture("http://158.49.247.184:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
 except:
 	print "problem opening input stream"
 	sys.exit(1)
 
-if not self.vidFile.isOpened():
+if not vidFile.isOpened():
 	print "capture stream not open"
 	sys.exit(1)
 
 while True:
-	ret, frame = self.vidFile.read()  # read first frame, and the return code of the function.
+	ret, frame = vidFile.read()  # read first frame, and the return code of the function.
 	if ret:
-		self.processFrame(frame)
+		#self.processFrame(frame)
 		cv2.imshow('Image', frame);
 		cv2.waitKey(20);

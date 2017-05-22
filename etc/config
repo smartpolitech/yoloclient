@@ -1,5 +1,5 @@
 # Proxies for required interfaces
-YoloServerProxy = yoloserver:tcp -h 158.49.247.209 -p 11001
+YoloServerProxy = yoloserver:tcp -h localhost -p 11001
 
 
 
