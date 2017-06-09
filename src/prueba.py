@@ -24,7 +24,9 @@ import cv2
 cv2.namedWindow("YOLO IA", cv2.WINDOW_AUTOSIZE)
 
 try:
-	vidFile = cv2.VideoCapture("http://158.49.247.240:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
+	#	vidFile = cv2.VideoCapture("http://158.49.247.240:88/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=X&pwd=Y&.mjpg")
+	vidFile = cv2.VideoCapture("rtsp://admin:opticalflow@158.49.247.240:88/videoMain")
+	# vidFile = cv2.VideoCapture("http://158.49.247.240:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
 	#vidFile = cv2.VideoCapture(0)
 	# vidFile = cv2.VideoCapture("http://158.49.247.184:88/cgi-bin/CGIStream.cgi?cmd=GetMJStream&usr=admin&pwd=opticalflow")
 except:
@@ -40,4 +42,4 @@ while True:
 	if ret:
 		#self.processFrame(frame)
 		cv2.imshow('Image', frame);
-		cv2.waitKey(20);
+		cv2.waitKey(2);
