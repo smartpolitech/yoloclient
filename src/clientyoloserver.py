@@ -103,6 +103,7 @@ if __name__ == '__main__':
 	status = 0
 	mprx = {}
 	parameters = {}
+	print ic.getProperties()
 	for i in ic.getProperties():
 		parameters[str(i)] = str(ic.getProperties().getProperty(i))
 
